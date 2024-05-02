@@ -109,9 +109,10 @@
               <tbody>
                     @foreach( $officials as $key => $official)
                         <tr class="bg-gray-100 text-center border-b text-sm text-gray-600">
-                            <td class="border-r">{{ $official->name}}</td>
-                            <td class="border-r">{{ $official->liveLink}}</td>
-                            <td class="border-r">{{ $official->sourceCode}}</td>
+                            <td class="border-r">{{ $official->idNumber}}</td>
+                            <td class="border-r">{{ $official->firstName}} | {{ $official->lastName}}</td>
+                            <td class="border-r">{{ $official->position}}</td>
+                            <td class="border-r">{{ $official->contactNumber}} | {{ $official->email}}</td>
                             <td class="flex justify-center space-x-2 p-2">
                                 <a href="{{ route('official.edit', $official->id)}}">
                                     <button class="bg-blue-500 hover:bg-blue-600 p-2 text-white hover:shadow-lg rounded-lg text-xs font-thin">Edit</button>
