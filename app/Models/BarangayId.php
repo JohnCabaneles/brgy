@@ -9,10 +9,5 @@ class BarangayId extends Model
 {
     use HasFactory;
 
-    protected $fillable = [
-        'name' => 'string|required',
-        'email' => 'string|required',
-        'address' => 'string|required',
-        'contact_number' => 'integer|required',
-    ];
+    protected $guarded = [];
 }

@@ -12,7 +12,11 @@ class BarangayIdController extends Controller
      */
     public function index()
     {
-        //
+        $barangayIds = BarangayId::orderBy('created_at', 'desc')->get();
+
+        return view('barangayId.index', [
+            'barangayIds' => $barangayIds,
+        ]);
     }
 
     /**

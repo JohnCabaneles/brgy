@@ -66,10 +66,10 @@
 
       </div>
       <button class="bg-blue-500 p-2 text-white rounded-lg hover:bg-blue-600">Submit</button>
-    </form>  
+    </form>
   </div>
   <hr />
-  <div class="pt-2">    
+  <div class="pt-2">
       <div class="table w-full p-2">
           <h1 class="pb-3 text-2xl">All Category</h1>
           <table class="w-full border">
@@ -98,7 +98,7 @@
                             Contact
                         </div>
                     </th>
-                      
+
                     <th class="p-2 border-r text-sm font-thin text-gray-500">
                         <div class="flex items-center justify-center">
                             Action
@@ -117,7 +117,7 @@
                                 <a href="{{ route('official.edit', $official->id)}}">
                                     <button class="bg-blue-500 hover:bg-blue-600 p-2 text-white hover:shadow-lg rounded-lg text-xs font-thin">Edit</button>
                                 </a>
-                            
+
                                 <form action="{{ route('official.destroy', $official->id)}}" method="POST">
                                     @csrf
                                     @method('DELETE')

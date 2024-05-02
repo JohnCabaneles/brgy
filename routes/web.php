@@ -21,7 +21,7 @@ Route::get('/', function () {
 });
 
 Route::resource('/officials', OfficialController::class);
-Route::resource('/barangay_id', BarangayIdController::class);
+Route::resource('/barangayId', BarangayIdController::class);
 
 Route::get('/dashboard', function () {
     return view('dashboard');
