@@ -1,6 +1,6 @@
 <?php
 
-
+use App\Http\Controllers\BarangayIdController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Official\OfficialController;
@@ -21,6 +21,7 @@ Route::get('/', function () {
 });
 
 Route::resource('/officials', OfficialController::class);
+Route::resource('/barangayId', BarangayIdController::class);
 
 Route::get('/dashboard', function () {
     return view('dashboard');
