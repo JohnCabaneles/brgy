@@ -42,12 +42,12 @@ class OfficialController extends Controller
 
         $official->update($formFields);
 
-        return redirect('/official')->with('message', 'Official updated successfully.');
+        return redirect('/official')->with('message', 'Official updated successfully!');
     }
 
     public function destroy(Official $official) {
         $official->delete();
 
-        return back()->with('message', 'Official deleted successfully.');
+        return back()->with('message', 'Official deleted successfully!');
     }
 }
