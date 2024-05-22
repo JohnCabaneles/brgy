@@ -13,10 +13,16 @@ return new class extends Migration
     {
         Schema::create('barangay_ids', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->string('brgy_id');
+            $table->foreignId('user_id')->references('id')->on('users')->cascadeOnDelete();
+            $table->string('firstName');
+            $table->string('lastName');
             $table->string('email');
             $table->string('address');
-            $table->string('idNumber');
+            $table->string('apartment')->nullable();
+            $table->string('city');
+            $table->string('province');
+            $table->string('zipCode');
             $table->string('contactNumber');
             $table->timestamps();
         });

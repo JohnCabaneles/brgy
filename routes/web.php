@@ -1,9 +1,11 @@
 <?php
 
 use App\Http\Controllers\BarangayIdController;
+use App\Http\Controllers\EventController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Official\OfficialController;
+use App\Http\Controllers\PermitController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,6 +24,8 @@ Route::get('/', function () {
 
 Route::resource('/officials', OfficialController::class);
 Route::resource('/barangayId', BarangayIdController::class);
+Route::resource('/permits', PermitController::class);
+Route::resource('/events', EventController::class);
 
 Route::get('/dashboard', function () {
     return view('dashboard');

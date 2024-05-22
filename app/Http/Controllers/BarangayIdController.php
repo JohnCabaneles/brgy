@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Models\BarangayId;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class BarangayIdController extends Controller
 {
@@ -32,7 +34,26 @@ class BarangayIdController extends Controller
      */
     public function store(Request $request)
     {
-        //
+      $formFields = $request->validate([
+            'firstName' => 'string',
+            'lastName' => 'string',
+            'contactNumber' => 'string',
+            'email' => 'string',
+            'address' => 'string',
+            'apartment' => 'string',
+            'city' => 'string',
+            'province' => 'string',
+            'zipCode' => 'string',
+        ]);
+
+        $brgyIdNumber = 'BRGY_' . str_pad(rand(010101010, 99999990), 4, '0', STR_PAD_LEFT);
+
+        $formFields['user_id'] = auth()->id();
+        $formFields['brgy_id'] = $brgyIdNumber;
+
+        BarangayId::create($formFields);
+
+        return back()->with('message', 'Barangay Id created sucessfully');
     }
 
     /**
@@ -62,8 +83,12 @@ class BarangayIdController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(BarangayId $barangayId)
+    public function destroy($id)
     {
-        //
+        $brgyIds = BarangayId::findOrFail($id);
+
+        $brgyIds->delete();
+
+        return back()->with('success', 'Barangay Id deleted successfully!');
     }
 }

@@ -13,6 +13,11 @@ return new class extends Migration
     {
         Schema::create('permits', function (Blueprint $table) {
             $table->id();
+            $table->string('businessName');
+            $table->string('location');
+            $table->string('owner');
+            $table->unsignedBigInteger('idNumber')->nullable();
+            $table->foreign('idNumber')->references('id')->on('barangay_ids')->cascadeOnDelete();
             $table->timestamps();
         });
     }
