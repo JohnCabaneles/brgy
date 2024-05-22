@@ -21,10 +21,15 @@ class OfficialController extends Controller
         $formFields = $request->validate([
             'firstName' => 'required',
             'lastName' => 'required',
+            'gender' => 'required',
+            'age' => 'required',
+            'idNumber' => 'required',
             'position' => 'required',
             'contactNumber' => 'required',
             'email' => 'required',
         ]);
+
+        $formFields['user_id'] = auth()->id();
 
         Official::create($formFields);
 
