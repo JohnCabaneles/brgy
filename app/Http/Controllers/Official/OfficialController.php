@@ -53,6 +53,6 @@ class OfficialController extends Controller
     public function destroy(Official $official) {
         $official->delete();
 
-        return back()->with('message', 'Official deleted successfully!');
+        return back()->with('message', 'Official deleted successfully.');
     }
 }
