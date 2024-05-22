@@ -2,9 +2,9 @@
 @section('content')
 <div class="bg-white shadow-lg rounded px-8 mt-12 pt-6 pb-8 mb-4 flex flex-col my-2">
     <div class="mb-6">
-      <h1 class="text-2xl">Fill up the form to add new officials.</h1>
+      <h1 class="text-2xl">Fill up the form to add new Barangay ID.</h1>
     </div>
-    <form method="POST" action="{{ route('officials.store') }}" enctype="multipart/form-data">
+    <form method="POST" action="{{-- {{ route('official.store') }} --}}" enctype="multipart/form-data">
         @csrf
       <div class="-mx-3 grid grid-cols-4 mb-6">
 
@@ -107,22 +107,21 @@
                   </tr>
               </thead>
               <tbody>
-                    @foreach( $officials as $key => $official)
+                    @foreach( $barangayIds as $key => $barangayId)
                         <tr class="bg-gray-100 text-center border-b text-sm text-gray-600">
-                            <td class="border-r">{{ $official->idNumber}}</td>
-                            <td class="border-r">{{ $official->firstName}} {{ $official->lastName}}</td>
-                            <td class="border-r">{{ $official->position}}</td>
-                            <td class="border-r">{{ $official->contactNumber}} | {{ $official->email}}</td>
+                            <td class="border-r">{{ $barangayId->id}}</td>
+                            <td class="border-r">{{ $barangayId->name}}</td>
+                            <td class="border-r">{{ $barangayId->contactNumber}} | {{ $barangayId->email}}</td>
                             <td class="flex justify-center space-x-2 p-2">
-                                {{-- <a href="{{ route('official.edit', $official->id)}}">
+                                <a href="{{ route('barangayId.edit', $barangayId->id)}}">
                                     <button class="bg-blue-500 hover:bg-blue-600 p-2 text-white hover:shadow-lg rounded-lg text-xs font-thin">Edit</button>
                                 </a>
 
-                                <form action="{{ route('official.destroy', $official->id)}}" method="POST">
+                                <form action="{{ route('barangayId.destroy', $barangayId->id)}}" method="POST">
                                     @csrf
                                     @method('DELETE')
                                     <button class="bg-red-500 hover:bg-red-600 p-2 text-white hover:shadow-lg rounded-lg text-xs font-thin">Remove</button>
-                                </form> --}}
+                                </form>
                             </td>
                         </tr>
                     @endforeach

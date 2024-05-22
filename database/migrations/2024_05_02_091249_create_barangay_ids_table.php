@@ -11,17 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('officials', function (Blueprint $table) {
+        Schema::create('barangay_ids', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->string('firstName');
-            $table->string('lastName');
-            $table->string('gender');
+            $table->string('name');
             $table->string('email');
-            $table->integer('age');
-            $table->string('contactNumber');
-            $table->string('position');
+            $table->string('address');
             $table->string('idNumber');
+            $table->string('contactNumber');
             $table->timestamps();
         });
     }
@@ -31,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('officials');
+        Schema::dropIfExists('barangay_ids');
     }
 };
