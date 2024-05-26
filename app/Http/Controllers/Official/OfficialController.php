@@ -42,11 +42,14 @@ class OfficialController extends Controller
 
     public function update(Request $request, Official $official) {
         $formFields = $request->validate([
-            'firstName' => 'required',
-            'lastName' => 'required',
-            'position' => 'required',
-            'contactNumber' => 'required',
-            'email' => 'required',
+            'firstName' => 'string',
+            'lastName' => 'string',
+            'gender' => 'string',
+            'age' => 'string',
+            'idNumber' => 'string',
+            'position' => 'string',
+            'contactNumber' => 'string',
+            'email' => 'string',
         ]);
 
         $official->update($formFields);
