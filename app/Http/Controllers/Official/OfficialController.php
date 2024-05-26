@@ -36,7 +36,8 @@ class OfficialController extends Controller
         return redirect()->back();
     }
 
-    public function update(Request $request, Official $official) {
+    public function update(Request $request, Official $official)
+    {
         $formFields = $request->validate([
             'firstName' => 'required',
             'lastName' => 'required',

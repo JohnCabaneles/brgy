@@ -37,6 +37,8 @@ class BarangayIdController extends Controller
       $formFields = $request->validate([
             'firstName' => 'string',
             'lastName' => 'string',
+            'gender' => 'string',
+            'age' => 'string',
             'contactNumber' => 'string',
             'email' => 'string',
             'address' => 'string',
@@ -69,7 +71,9 @@ class BarangayIdController extends Controller
      */
     public function edit(BarangayId $barangayId)
     {
-        //
+        return view('barangayId.edit', [
+            'barangayId' => $barangayId
+        ]);
     }
 
     /**
@@ -77,7 +81,24 @@ class BarangayIdController extends Controller
      */
     public function update(Request $request, BarangayId $barangayId)
     {
-        //
+        $formFields = $request->validate([
+            'firstName' => 'string',
+            'lastName' => 'string',
+            'gender' => 'string',
+            'age' => 'string',
+            'contactNumber' => 'string',
+            'email' => 'string',
+            'address' => 'string',
+            'apartment' => 'string',
+            'city' => 'string',
+            'province' => 'string',
+            'zipCode' => 'string',
+        ]);
+
+        $barangayId->update($formFields);
+
+        return redirect()->route('barangayId.index')->with('message', 'Barangay Id successfully updated!');
+
     }
 
     /**
