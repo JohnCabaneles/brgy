@@ -5,9 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\HasMany;
 
-class BarangayId extends Model
+class IncidentReport extends Model
 {
     use HasFactory;
 
@@ -18,13 +17,9 @@ class BarangayId extends Model
         return $this->belongsTo(User::class, 'user_id');
     }
 
-    public function permits() : HasMany
+    public function barangayId() : BelongsTo
     {
-        return $this->hasMany(Permit::class, 'user_id');
+        return $this->belongsTo(BarangayId::class, 'user_id');
     }
 
-    public function incidentReports() : HasMany
-    {
-        return $this->hasMany(IncidentReport::class, 'user_id');
-    }
 }
