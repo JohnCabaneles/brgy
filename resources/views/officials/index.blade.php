@@ -114,15 +114,15 @@
                             <td class="border-r">{{ $official->position}}</td>
                             <td class="border-r">{{ $official->contactNumber}} | {{ $official->email}}</td>
                             <td class="flex justify-center space-x-2 p-2">
-                                {{-- <a href="{{ route('official.edit', $official->id)}}">
+                                <a href="{{ route('officials.edit', $official->id)}}">
                                     <button class="bg-blue-500 hover:bg-blue-600 p-2 text-white hover:shadow-lg rounded-lg text-xs font-thin">Edit</button>
                                 </a>
 
-                                <form action="{{ route('official.destroy', $official->id)}}" method="POST">
+                                <form action="{{ route('officials.destroy', $official->id)}}" method="POST">
                                     @csrf
                                     @method('DELETE')
                                     <button class="bg-red-500 hover:bg-red-600 p-2 text-white hover:shadow-lg rounded-lg text-xs font-thin">Remove</button>
-                                </form> --}}
+                                </form>
                             </td>
                         </tr>
                     @endforeach
