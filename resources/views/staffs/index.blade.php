@@ -2,9 +2,9 @@
 @section('content')
 <div class="bg-white shadow-lg rounded px-8 mt-12 pt-6 pb-8 mb-4 flex flex-col my-2">
     <div class="mb-6">
-      <h1 class="text-2xl">Fill up the form to add new officials.</h1>
+      <h1 class="text-2xl">Fill up the form to add new staff.</h1>
     </div>
-    <form method="POST" action="{{ route('officials.store') }}" enctype="multipart/form-data">
+    <form method="POST" action="{{ route('staffs.store') }}" enctype="multipart/form-data">
         @csrf
       <div class="-mx-3 grid grid-cols-4 mb-6">
 
@@ -71,7 +71,7 @@
   <hr />
   <div class="pt-2">
       <div class="table w-full p-2">
-          <h1 class="pb-3 text-2xl">All officials</h1>
+          <h1 class="pb-3 text-2xl">All staffs</h1>
           <table class="w-full border">
               <thead>
                   <tr class="bg-gray-50 border-b">
@@ -107,18 +107,18 @@
                   </tr>
               </thead>
               <tbody>
-                    @foreach( $officials as $key => $official)
+                    @foreach( $staffs as $key => $staff)
                         <tr class="bg-gray-100 text-center border-b text-sm text-gray-600">
-                            <td class="border-r">{{ $official->idNumber}}</td>
-                            <td class="border-r">{{ $official->firstName}} {{ $official->lastName}}</td>
-                            <td class="border-r">{{ $official->position}}</td>
-                            <td class="border-r">{{ $official->contactNumber}} | {{ $official->email}}</td>
+                            <td class="border-r">{{ $staff->idNumber}}</td>
+                            <td class="border-r">{{ $staff->firstName}} {{ $staff->lastName}}</td>
+                            <td class="border-r">{{ $staff->position}}</td>
+                            <td class="border-r">{{ $staff->contactNumber}} | {{ $staff->email}}</td>
                             <td class="flex justify-center space-x-2 p-2">
-                                <a href="{{ route('officials.edit', $official->id)}}">
+                                <a href="{{ route('staffs.edit', $staff->id)}}">
                                     <button class="bg-blue-500 hover:bg-blue-600 p-2 text-white hover:shadow-lg rounded-lg text-xs font-thin">Edit</button>
                                 </a>
 
-                                <form action="{{ route('officials.destroy', $official->id)}}" method="POST">
+                                <form action="{{ route('staffs.destroy', $staff->id)}}" method="POST">
                                     @csrf
                                     @method('DELETE')
                                     <button class="bg-red-500 hover:bg-red-600 p-2 text-white hover:shadow-lg rounded-lg text-xs font-thin">Remove</button>

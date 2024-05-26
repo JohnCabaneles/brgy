@@ -1,11 +1,12 @@
 <?php
 
-use App\Http\Controllers\BarangayIdController;
-use App\Http\Controllers\EventController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\Official\OfficialController;
+use App\Http\Controllers\EventController;
 use App\Http\Controllers\PermitController;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\BarangayIdController;
+use App\Http\Controllers\Staff\StaffController;
+use App\Http\Controllers\Official\OfficialController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,6 +24,7 @@ Route::get('/', function () {
 });
 
 Route::resource('/officials', OfficialController::class);
+Route::resource('/staffs', StaffController::class);
 Route::resource('/barangayId', BarangayIdController::class);
 Route::resource('/permits', PermitController::class);
 Route::resource('/events', EventController::class);
