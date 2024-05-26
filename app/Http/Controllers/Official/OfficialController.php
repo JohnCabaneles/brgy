@@ -35,7 +35,7 @@ class OfficialController extends Controller
 
         return redirect()->back();
     }
-  
+
     public function edit(Official $official) {
         return view('officials.edit', ['officials' => $official]);
     }

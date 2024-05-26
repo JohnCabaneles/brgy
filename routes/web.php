@@ -5,6 +5,7 @@ use App\Http\Controllers\EventController;
 use App\Http\Controllers\PermitController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\BarangayIdController;
+use App\Http\Controllers\IncidentReportController;
 use App\Http\Controllers\Staff\StaffController;
 use App\Http\Controllers\Official\OfficialController;
 
@@ -28,6 +29,7 @@ Route::resource('/staffs', StaffController::class);
 Route::resource('/barangayId', BarangayIdController::class);
 Route::resource('/permits', PermitController::class);
 Route::resource('/events', EventController::class);
+Route::resource('/incidentReport', IncidentReportController::class);
 
 Route::get('/dashboard', function () {
     return view('dashboard');
