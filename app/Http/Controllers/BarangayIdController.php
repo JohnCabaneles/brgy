@@ -46,6 +46,7 @@ class BarangayIdController extends Controller
             'city' => 'string',
             'province' => 'string',
             'zipCode' => 'string',
+            'status' => 'string',
         ]);
 
         $brgyIdNumber = 'BRGY_' . str_pad(rand(010101010, 99999990), 4, '0', STR_PAD_LEFT);
