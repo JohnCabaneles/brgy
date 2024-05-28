@@ -85,6 +85,16 @@
             <input class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-red rounded py-3 px-4 mb-3" name="zipCode" id="zipCode" type="text" placeholder="Please enter address">
         </div>
 
+        <div class="md:w-1/2 lg:w-full px-3 mb-6 md:mb-0">
+          <label class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2" for="zipCode">
+            Payment
+          </label>
+          <select class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-red rounded py-3 px-4 mb-3" placeholder="Payment" name="status" id="status">
+            <option value="0">waiting for payment</option>
+            <option value="1">paid</option>
+          </select>
+        </div>
+
       </div>
       <button class="bg-blue-500 p-2 text-white rounded-lg hover:bg-blue-600">Submit</button>
     </form>
