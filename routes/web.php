@@ -8,6 +8,7 @@ use App\Http\Controllers\BarangayIdController;
 use App\Http\Controllers\IncidentReportController;
 use App\Http\Controllers\Staff\StaffController;
 use App\Http\Controllers\Official\OfficialController;
+use App\Http\Controllers\UserDashboardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -39,6 +40,10 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
+
+Route::prefix('user')->group(function(){
+    Route::resource('/dashboard', UserDashboardController::class);
 });
 
 require __DIR__.'/auth.php';
