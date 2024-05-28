@@ -26,6 +26,7 @@ return new class extends Migration
             $table->string('province');
             $table->string('zipCode');
             $table->string('contactNumber');
+            $table->boolean('status')->default(0);
             $table->timestamps();
         });
     }
