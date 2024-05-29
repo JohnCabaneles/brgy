@@ -27,6 +27,7 @@ Route::get('/', function () {
 Route::resource('/officials', OfficialController::class);
 Route::resource('/staffs', StaffController::class);
 Route::resource('/barangayId', BarangayIdController::class);
+Route::get('/barangayId/search', [BarangayIdController::class, 'search'])->name('barangayId.search');
 Route::resource('/permits', PermitController::class);
 Route::resource('/events', EventController::class);
 Route::resource('/incidentReport', IncidentReportController::class);
