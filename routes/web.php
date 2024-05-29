@@ -49,4 +49,5 @@ Route::prefix('user')->group(function(){
     Route::resource('/dashboard', UserDashboardController::class);
 });
 
+#testing routes
 require __DIR__.'/auth.php';
