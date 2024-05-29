@@ -59,12 +59,23 @@ class BarangayIdController extends Controller
         return back()->with('message', 'Barangay Id created sucessfully');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(BarangayId $barangayId)
+    public function show(Request $request) {
+        $searchQuery = $request->input('q');
+
+        // Perform the search query using the Product model
+        $barangayIds = BarangayId::where('brgy_id', 'like', '%' . $searchQuery . '%')->paginate(10);
+
+        return view('barangayId.index', ['barangayIds' => $barangayIds]);
+    }
+
+    public function search(Request $request)
     {
-        //
+        $searchQuery = $request->input('q');
+
+        // Perform the search query using the Product model
+        $barangayIds = BarangayId::where('brgy_id', 'like', '%' . $searchQuery . '%')->paginate(10);
+
+        return view('barangayId.index', ['barangayIds' => $barangayIds]);
     }
 
     /**
