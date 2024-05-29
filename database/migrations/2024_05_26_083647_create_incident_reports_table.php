@@ -11,13 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('permits', function (Blueprint $table) {
+        Schema::create('incident_reports', function (Blueprint $table) {
             $table->id();
-            $table->string('businessName');
-            $table->string('location');
-            $table->string('owner');
-            $table->unsignedBigInteger('idNumber')->nullable();
-            $table->foreign('idNumber')->references('id')->on('barangay_ids')->cascadeOnDelete();
+            $table->foreignId('user_id')->references('id')->on('users')->cascadeOnDelete();
+            $table->foreignId('brgy_id')->references('id')->on('barangay_ids')->cascadeOnDelete();
+            $table->string('subject');
+            $table->string('message');
             $table->timestamps();
         });
     }
@@ -27,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('permits');
+        Schema::dropIfExists('incident_reports');
     }
 };

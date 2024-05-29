@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Models\BarangayId;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class BarangayIdController extends Controller
 {
@@ -32,15 +34,48 @@ class BarangayIdController extends Controller
      */
     public function store(Request $request)
     {
-        //
+      $formFields = $request->validate([
+            'firstName' => 'string',
+            'lastName' => 'string',
+            'gender' => 'string',
+            'age' => 'string',
+            'contactNumber' => 'string',
+            'email' => 'string',
+            'address' => 'string',
+            'apartment' => 'string',
+            'city' => 'string',
+            'province' => 'string',
+            'zipCode' => 'string',
+            'status' => 'string',
+        ]);
+
+        $brgyIdNumber = 'BRGY_' . str_pad(rand(010101010, 99999990), 4, '0', STR_PAD_LEFT);
+
+        $formFields['user_id'] = auth()->id();
+        $formFields['brgy_id'] = $brgyIdNumber;
+
+        BarangayId::create($formFields);
+
+        return back()->with('message', 'Barangay Id created sucessfully');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(BarangayId $barangayId)
+    public function show(Request $request) {
+        $searchQuery = $request->input('q');
+
+        // Perform the search query using the Product model
+        $barangayIds = BarangayId::where('brgy_id', 'like', '%' . $searchQuery . '%')->paginate(10);
+
+        return view('barangayId.index', ['barangayIds' => $barangayIds]);
+    }
+
+    public function search(Request $request)
     {
-        //
+        $searchQuery = $request->input('q');
+
+        // Perform the search query using the Product model
+        $barangayIds = BarangayId::where('brgy_id', 'like', '%' . $searchQuery . '%')->paginate(10);
+
+        return view('barangayId.index', ['barangayIds' => $barangayIds]);
     }
 
     /**
@@ -48,7 +83,9 @@ class BarangayIdController extends Controller
      */
     public function edit(BarangayId $barangayId)
     {
-        //
+        return view('barangayId.edit', [
+            'barangayId' => $barangayId
+        ]);
     }
 
     /**
@@ -56,14 +93,35 @@ class BarangayIdController extends Controller
      */
     public function update(Request $request, BarangayId $barangayId)
     {
-        //
+        $formFields = $request->validate([
+            'firstName' => 'string',
+            'lastName' => 'string',
+            'gender' => 'string',
+            'age' => 'string',
+            'contactNumber' => 'string',
+            'email' => 'string',
+            'address' => 'string',
+            'apartment' => 'string',
+            'city' => 'string',
+            'province' => 'string',
+            'zipCode' => 'string',
+        ]);
+
+        $barangayId->update($formFields);
+
+        return redirect()->route('barangayId.index')->with('message', 'Barangay Id successfully updated!');
+
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(BarangayId $barangayId)
+    public function destroy($id)
     {
-        //
+        $brgyIds = BarangayId::findOrFail($id);
+
+        $brgyIds->delete();
+
+        return back()->with('success', 'Barangay Id deleted successfully!');
     }
 }
