@@ -33,8 +33,18 @@ class EventController extends Controller
     public function store(Request $request)
     {
         $formFields = $request->validate([
-
+            'title' => 'string',
+            'description' => 'string'
         ]);
+
+        if($request->hasFile('image')) {
+            $formFields['image'] = $request->file('image')->store('EventImage', 'public');
+        };
+
+        Event::create($formFields);
+
+        return redirect()->back();
+
     }
 
     /**
@@ -50,7 +60,9 @@ class EventController extends Controller
      */
     public function edit(Event $event)
     {
-        //
+        return view('events.edit', [
+            'event' => $event
+        ]);
     }
 
     /**
@@ -58,7 +70,19 @@ class EventController extends Controller
      */
     public function update(Request $request, Event $event)
     {
-        //
+         $formFields = $request->validate([
+            'title' => 'string',
+            'description' => 'string'
+        ]);
+
+        if($request->hasFile('image')) {
+            $formFields['image'] = $request->file('image')->store('EventImage', 'public');
+        };
+
+        $event->update($formFields);
+
+        return redirect('/events')->with('message', 'Event updated succesfully');
+
     }
 
     /**
@@ -66,6 +90,8 @@ class EventController extends Controller
      */
     public function destroy(Event $event)
     {
-        //
+        $event->delete();
+
+        return back()->with('message', 'Event deleted successfully');
     }
 }
