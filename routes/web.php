@@ -31,6 +31,8 @@ Route::resource('/barangayId', BarangayIdController::class);
 Route::resource('/permits', PermitController::class);
 Route::resource('/events', EventController::class);
 Route::resource('/incidentReport', IncidentReportController::class);
+Route::resource('/events', EventController::class);
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');

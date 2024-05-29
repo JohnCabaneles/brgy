@@ -12,7 +12,11 @@ class EventController extends Controller
      */
     public function index()
     {
-        //
+        $events = Event::orderBy('created_at', 'desc')->get();
+
+        return view('events.index',[
+            'events' => $events
+        ]);
     }
 
     /**
@@ -28,7 +32,9 @@ class EventController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $formFields = $request->validate([
+
+        ]);
     }
 
     /**
