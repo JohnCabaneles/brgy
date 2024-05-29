@@ -1,6 +1,5 @@
 @extends('dashboard')
 @section('content')
-<a href="/barangayId" class="underline">Back</a>
 <div class="bg-white shadow-lg rounded px-8 mt-12 pt-6 pb-8 mb-4 flex flex-col my-2">
     <div class="mb-6">
       <h1 class="text-2xl">Fill up the form to add new Barangay ID.</h1>
