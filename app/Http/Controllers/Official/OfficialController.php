@@ -35,7 +35,7 @@ class OfficialController extends Controller
 
         return redirect()->back();
     }
-  
+
     public function edit(Official $official) {
         return view('officials.edit', ['officials' => $official]);
     }
@@ -43,11 +43,14 @@ class OfficialController extends Controller
     public function update(Request $request, Official $official) {
 
         $formFields = $request->validate([
-            'firstName' => 'required',
-            'lastName' => 'required',
-            'position' => 'required',
-            'contactNumber' => 'required',
-            'email' => 'required',
+            'firstName' => 'string',
+            'lastName' => 'string',
+            'gender' => 'string',
+            'age' => 'string',
+            'idNumber' => 'string',
+            'position' => 'string',
+            'contactNumber' => 'string',
+            'email' => 'string',
         ]);
 
         $official->update($formFields);

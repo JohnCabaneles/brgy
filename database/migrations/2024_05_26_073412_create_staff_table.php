@@ -11,22 +11,17 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('barangay_ids', function (Blueprint $table) {
+        Schema::create('staff', function (Blueprint $table) {
             $table->id();
-            $table->string('brgy_id');
-            $table->foreignId('user_id')->references('id')->on('users')->cascadeOnDelete();
+            $table->foreignId('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->string('firstName');
             $table->string('lastName');
             $table->string('gender');
-            $table->string('age');
             $table->string('email');
-            $table->string('address');
-            $table->string('apartment')->nullable();
-            $table->string('city');
-            $table->string('province');
-            $table->string('zipCode');
+            $table->integer('age');
             $table->string('contactNumber');
-            $table->boolean('status')->default(0);
+            $table->string('position');
+            $table->string('idNumber');
             $table->timestamps();
         });
     }
@@ -36,6 +31,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('barangay_ids');
+        Schema::dropIfExists('staff');
     }
 };

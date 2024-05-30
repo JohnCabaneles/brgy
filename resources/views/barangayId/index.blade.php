@@ -1,5 +1,6 @@
 @extends('dashboard')
 @section('content')
+<a href="/barangayId" class="underline">Back</a>
 <div class="bg-white shadow-lg rounded px-8 mt-12 pt-6 pb-8 mb-4 flex flex-col my-2">
     <div class="mb-6">
       <h1 class="text-2xl">Fill up the form to add new Barangay ID.</h1>
@@ -85,6 +86,16 @@
             <input class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-red rounded py-3 px-4 mb-3" name="zipCode" id="zipCode" type="text" placeholder="Please enter address">
         </div>
 
+        <div class="md:w-1/2 lg:w-full px-3 mb-6 md:mb-0">
+          <label class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2" for="zipCode">
+            Payment
+          </label>
+          <select class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-red rounded py-3 px-4 mb-3" placeholder="Payment" name="status" id="status">
+            <option value="0">waiting for payment</option>
+            <option value="1">paid</option>
+          </select>
+        </div>
+
       </div>
       <button class="bg-blue-500 p-2 text-white rounded-lg hover:bg-blue-600">Submit</button>
     </form>
@@ -92,7 +103,15 @@
   <hr />
   <div class="pt-2">
       <div class="table w-full p-2">
+        <div class="flex justify-between">
           <h1 class="pb-3 text-2xl">All IDs</h1>
+          <div class="hidden pb-3 sm:flex sm:items-center sm:ms-6">
+            <form action="{{ route('barangayId.search')}}" method="GET">
+                <input type="text" name="q" class="rounded-xl" placeholder="Search...">
+                <button type="submit" class="ml-2 bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">Search</button>
+            </form>
+          </div>
+        </div>
           <table class="w-full border">
               <thead>
                   <tr class="bg-gray-50 border-b">

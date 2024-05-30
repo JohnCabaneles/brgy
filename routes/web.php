@@ -1,11 +1,14 @@
 <?php
 
-use App\Http\Controllers\BarangayIdController;
-use App\Http\Controllers\EventController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\Official\OfficialController;
+use App\Http\Controllers\EventController;
 use App\Http\Controllers\PermitController;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\BarangayIdController;
+use App\Http\Controllers\IncidentReportController;
+use App\Http\Controllers\Staff\StaffController;
+use App\Http\Controllers\Official\OfficialController;
+use App\Http\Controllers\UserDashboardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,9 +26,14 @@ Route::get('/', function () {
 });
 
 Route::resource('/officials', OfficialController::class);
+Route::resource('/staffs', StaffController::class);
 Route::resource('/barangayId', BarangayIdController::class);
+Route::get('/barangayId/search', [BarangayIdController::class, 'search'])->name('barangayId.search');
 Route::resource('/permits', PermitController::class);
 Route::resource('/events', EventController::class);
+Route::resource('/incidentReport', IncidentReportController::class);
+Route::resource('/events', EventController::class);
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -37,4 +45,9 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+Route::prefix('user')->group(function(){
+    Route::resource('/dashboard', UserDashboardController::class);
+});
+
+#testing routes
 require __DIR__.'/auth.php';
