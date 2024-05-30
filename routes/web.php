@@ -3,7 +3,8 @@
 use App\Http\Controllers\AppointmentController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EventController;
-use App\Http\Controllers\PermitController;
+use App\Http\Controllers\Permit\PermitController;
+use App\Http\Controllers\Permit\UserPermitController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\BarangayIdController;
 use App\Http\Controllers\IncidentReportController;
@@ -53,7 +54,10 @@ Route::middleware('auth')->group(function () {
 
 Route::prefix('user')->group(function(){
     Route::resource('/dashboard', UserDashboardController::class);
+    Route::resource('/permit', UserPermitController::class);
 });
+
+Route::get('/checkout/success', [UserPermitController::class, 'success'])->name('redirects.success');
 
 #testing routes
 require __DIR__.'/auth.php';

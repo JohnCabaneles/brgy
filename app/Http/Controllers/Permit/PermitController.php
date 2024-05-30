@@ -1,9 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Permit;
 
 use App\Models\Permit;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class PermitController extends Controller
 {
@@ -12,7 +13,7 @@ class PermitController extends Controller
      */
     public function index()
     {
-        $permits = Permit::orderBy('created_at', 'desc')->paginate(10);
+        $permits = Permit::orderBy('created_at', 'desc')->get();
 
         return view('permit.index', [
             'permits' => $permits
