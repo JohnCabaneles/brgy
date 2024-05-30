@@ -5,7 +5,7 @@
     <div class="mb-6">
       <h1 class="text-2xl">Fill up the form to add new Barangay ID.</h1>
     </div>
-    <form method="POST" action="{{ route('barangayId.store') }}" enctype="multipart/form-data">
+    <form method="POST" action="{{ route('barangayId.store', auth()->user()->id) }}" enctype="multipart/form-data">
         @csrf
       <div class="-mx-3 grid grid-cols-4 mb-6">
 

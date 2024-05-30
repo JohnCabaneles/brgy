@@ -8,13 +8,23 @@
     <h1 class="text-3xl font-bold text-gray-800">Resident Details</h1>
   </div>
 
-  <div class="grid grid-cols-4 grid-col">
+  <div class="grid grid-cols-5 grid-col">
+
+    <div class="mb-6 mr-2">
+        <label class="block mb-1 text-sm font-semibold text-gray-600">
+        BRGY ID
+        </label>
+        <div class="px-3 py-2 text-lg text-gray-800 bg-gray-100 rounded">
+            {{$incidentReports->user->brgy_id}}
+        </div>
+    </div>
+
     <div class="mb-4 mr-2">
         <label class="block mb-1 text-sm font-semibold text-gray-600">
             First Name
         </label>
         <div class="px-3 py-2 text-lg text-gray-800 bg-gray-100 rounded">
-            {{$incidentReports->barangayId->firstName}}
+            {{$incidentReports->user->firstName}}
         </div>
     </div>
 
@@ -23,7 +33,7 @@
       Last Name
     </label>
     <div class="px-3 py-2 text-lg text-gray-800 bg-gray-100 rounded">
-         {{$incidentReports->barangayId->lastName}}
+         {{$incidentReports->user->lastName}}
     </div>
   </div>
 
@@ -32,7 +42,7 @@
       Age
     </label>
     <div class="px-3 py-2 text-lg text-gray-800 bg-gray-100 rounded">
-         {{$incidentReports->barangayId->age}}
+         {{$incidentReports->user->age}}
     </div>
   </div>
 
@@ -41,7 +51,7 @@
       Contact Number
     </label>
     <div class="px-3 py-2 text-lg text-gray-800 bg-gray-100 rounded">
-         {{$incidentReports->barangayId->contactNumber}}
+         {{$incidentReports->user->contactNumber}}
     </div>
   </div>
   </div>
@@ -52,7 +62,7 @@
       Address
     </label>
     <div class="px-3 py-2 text-lg text-gray-800 bg-gray-100 rounded">
-        {{$incidentReports->barangayId->firstName}}
+        {{$incidentReports->user->address}}
     </div>
   </div>
   <div class="mb-4 mr-2">
@@ -60,7 +70,7 @@
       First Name
     </label>
     <div class="px-3 py-2 text-lg text-gray-800 bg-gray-100 rounded">
-        {{$incidentReports->barangayId->firstName}}
+        {{$incidentReports->user->firstName}}
     </div>
   </div>
   </div>
