@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Models\BarangayId;
 use Illuminate\Http\Request;
 use App\Models\IncidentReport;
@@ -12,7 +13,7 @@ class IncidentReportController extends Controller
     public function index()
     {
         $incidentReports = IncidentReport::orderBy('created_at', 'desc')->get();
-        $barangayIds = BarangayId::orderBy('created_at', 'desc')->get();
+        $barangayIds = User::orderBy('created_at', 'desc')->get();
 
         return view('incidentReport.index', [
             'incidentReports' => $incidentReports,
@@ -22,7 +23,6 @@ class IncidentReportController extends Controller
 
     public function store(Request $request)
     {
-
         $user = auth()->user();
 
         $formFields = $request->validate([
@@ -30,10 +30,7 @@ class IncidentReportController extends Controller
             'message'=> 'string',
         ]);
 
-        $barangayId = $user->barangayId()->first();
-
         $formFields['user_id'] = $user->id;
-        $formFields['brgy_id'] = $barangayId->id;
 
         IncidentReport::create($formFields);
 

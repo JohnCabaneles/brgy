@@ -63,7 +63,7 @@
                         <tr class="text-sm text-center text-gray-600 bg-gray-100 border-b">
                             <td class="border-r">{{ $incidentReport->id}}</td>
                             <td class="border-r">{{ $incidentReport->subject}}</td>
-                            <td class="border-r">{{ $incidentReport->message}}</td>
+                            <td class="border-r truncate max-w-xs p-2">{{ $incidentReport->message}}</td>
                             <td class="flex justify-center p-2 space-x-2">
                                 <a href="{{ route('incidentReport.show', $incidentReport->id)}}">
                                     <button class="p-2 text-xs font-thin text-white bg-blue-500 rounded-lg hover:bg-blue-600 hover:shadow-lg">View</button>

@@ -27,12 +27,18 @@ Route::get('/', function () {
 
 Route::resource('/officials', OfficialController::class);
 Route::resource('/staffs', StaffController::class);
-Route::resource('/barangayId', BarangayIdController::class);
-Route::get('/barangayId/search', [BarangayIdController::class, 'search'])->name('barangayId.search');
 Route::resource('/permits', PermitController::class);
 Route::resource('/events', EventController::class);
 Route::resource('/incidentReport', IncidentReportController::class);
 Route::resource('/events', EventController::class);
+
+Route::get('/barangayId', [BarangayIdController::class, 'index']);
+Route::post('/barangayId/{user}', [BarangayIdController::class, 'store'])->name('barangayId.store');
+Route::patch('/barangay/id/{user}', [BarangayIdController::class, 'update'])->name('brgyId.update');
+Route::get('/barangayId/edit/{user}', [BarangayIdController::class, 'edit'])->name('barangayId.edit');
+Route::post('/barangayId/delete/{user}', [BarangayIdController::class, 'destroy'])->name('barangayId.destroy');
+Route::get('/barangayId/search', [BarangayIdController::class, 'search'])->name('barangayId.search');
+
 
 
 Route::get('/dashboard', function () {

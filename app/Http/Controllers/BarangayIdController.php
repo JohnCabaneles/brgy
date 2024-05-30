@@ -14,10 +14,10 @@ class BarangayIdController extends Controller
      */
     public function index()
     {
-        $barangayIds = BarangayId::orderBy('created_at', 'desc')->get();
+        $user = User::orderBy('created_at', 'desc')->get();
 
         return view('barangayId.index', [
-            'barangayIds' => $barangayIds,
+            'barangayIds' => $user,
         ]);
     }
 
@@ -34,6 +34,7 @@ class BarangayIdController extends Controller
      */
     public function store(Request $request)
     {
+
       $formFields = $request->validate([
             'firstName' => 'string',
             'lastName' => 'string',
@@ -51,10 +52,10 @@ class BarangayIdController extends Controller
 
         $brgyIdNumber = 'BRGY_' . str_pad(rand(010101010, 99999990), 4, '0', STR_PAD_LEFT);
 
-        $formFields['user_id'] = auth()->id();
         $formFields['brgy_id'] = $brgyIdNumber;
+        $formFields['password'] = Hash::make('password');
 
-        BarangayId::create($formFields);
+        User::create($formFields);
 
         return back()->with('message', 'Barangay Id created sucessfully');
     }
@@ -63,7 +64,7 @@ class BarangayIdController extends Controller
         $searchQuery = $request->input('q');
 
         // Perform the search query using the Product model
-        $barangayIds = BarangayId::where('brgy_id', 'like', '%' . $searchQuery . '%')->paginate(10);
+        $barangayIds = User::where('brgy_id', 'like', '%' . $searchQuery . '%')->paginate(10);
 
         return view('barangayId.index', ['barangayIds' => $barangayIds]);
     }
@@ -73,7 +74,7 @@ class BarangayIdController extends Controller
         $searchQuery = $request->input('q');
 
         // Perform the search query using the Product model
-        $barangayIds = BarangayId::where('brgy_id', 'like', '%' . $searchQuery . '%')->paginate(10);
+        $barangayIds = User::where('brgy_id', 'like', '%' . $searchQuery . '%')->paginate(10);
 
         return view('barangayId.index', ['barangayIds' => $barangayIds]);
     }
@@ -81,17 +82,17 @@ class BarangayIdController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(BarangayId $barangayId)
+    public function edit(User $user)
     {
         return view('barangayId.edit', [
-            'barangayId' => $barangayId
+            'user' => $user
         ]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, BarangayId $barangayId)
+    public function update(Request $request, User $user)
     {
         $formFields = $request->validate([
             'firstName' => 'string',
@@ -99,7 +100,6 @@ class BarangayIdController extends Controller
             'gender' => 'string',
             'age' => 'string',
             'contactNumber' => 'string',
-            'email' => 'string',
             'address' => 'string',
             'apartment' => 'string',
             'city' => 'string',
@@ -107,9 +107,9 @@ class BarangayIdController extends Controller
             'zipCode' => 'string',
         ]);
 
-        $barangayId->update($formFields);
+        $user->update($formFields);
 
-        return redirect()->route('barangayId.index')->with('message', 'Barangay Id successfully updated!');
+        return redirect('/barangayId')->with('message', 'Barangay Id successfully updated!');
 
     }
 
@@ -118,7 +118,7 @@ class BarangayIdController extends Controller
      */
     public function destroy($id)
     {
-        $brgyIds = BarangayId::findOrFail($id);
+        $brgyIds = User::findOrFail($id);
 
         $brgyIds->delete();
 
