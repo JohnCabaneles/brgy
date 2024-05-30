@@ -11,4 +11,8 @@ class Permit extends Model
     use HasFactory;
 
     protected $guarded = [];
+
+    public function user() {
+        return $this->belongsTo(user::class, 'user_id');
+    }
 }
