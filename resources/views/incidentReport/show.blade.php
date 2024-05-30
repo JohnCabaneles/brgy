@@ -1,5 +1,8 @@
 @extends('dashboard')
 @section('content')
+
+ <a href="/incidentReport" class="mt-10"><i class="fa-solid fa-chevron-left"></i></a>
+
 <div class="flex flex-col px-8 pt-6 pb-8 my-2 mt-12 mb-4 bg-white rounded-lg shadow-lg">
   <div class="mb-6">
     <h1 class="text-3xl font-bold text-gray-800">Resident Details</h1>
@@ -67,7 +70,7 @@
         <label class="block mb-1 text-lg font-semibold text-gray-600">
             Incident Subject
         </label>
-        <div class="px-3 py-2 bg-gray-100 rounded text-gmray-800 text-s">
+        <div class="px-3 py-2 bg-gray-100 rounded text-gmray-800 text-sm">
             {{$incidentReports->subject}}
         </div>
     </div>
