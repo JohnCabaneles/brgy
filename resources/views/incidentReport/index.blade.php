@@ -2,7 +2,7 @@
 @section('content')
 <div class="flex flex-col px-8 pt-6 pb-8 my-2 mt-12 mb-4 bg-white rounded shadow-lg">
     <div class="mb-6">
-      <h1 class="text-2xl">Fill up the form to add new Barangay ID.</h1>
+      <h1 class="text-2xl">File Incident.</h1>
     </div>
     <form method="POST" action="{{ route('incidentReport.store') }}" enctype="multipart/form-data">
         @csrf

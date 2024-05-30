@@ -22,7 +22,7 @@ return new class extends Migration
         });
     }
 
-    /**
+    /**s
      * Reverse the migrations.
      */
     public function down(): void
