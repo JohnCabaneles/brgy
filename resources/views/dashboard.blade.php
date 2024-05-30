@@ -6,9 +6,7 @@
                 Hello, {{ Auth::user()->firstName }}
             </h2>
             <div class="space-x-4">
-                <a href="#" class="hover:border-b-2 border-gray-500">Request Permit</a>
-                <a href="#" class="hover:border-b-2 border-gray-500">Request barangay ID</a>
-                <a href="#" class="hover:border-b-2 border-gray-500">Set up appointment</a>
+                <a href="/permits" class="hover:border-b-2 border-gray-500">Request Permit</a>
                 <a href="#" class="hover:border-b-2 border-gray-500">Incident report</a>
             </div>
         </div>
