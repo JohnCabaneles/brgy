@@ -59,5 +59,8 @@ Route::prefix('user')->group(function(){
 
 Route::get('/checkout/success', [UserPermitController::class, 'success'])->name('redirects.success');
 
+# for pdf download
+Route::get('/download-business-permit-pdf/{id}', [PermitController::class, 'downloadPdf'])->name('download.business_permit_pdf');
+
 #testing routes
 require __DIR__.'/auth.php';
