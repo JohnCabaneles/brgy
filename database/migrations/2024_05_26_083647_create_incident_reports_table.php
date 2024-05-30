@@ -14,7 +14,6 @@ return new class extends Migration
         Schema::create('incident_reports', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->references('id')->on('users')->cascadeOnDelete();
-            $table->foreignId('brgy_id')->references('id')->on('barangay_ids')->cascadeOnDelete();
             $table->string('subject');
             $table->string('message');
             $table->timestamps();
