@@ -54,10 +54,4 @@ class User extends Authenticatable
     public function permits() {
         return $this->hasMany(Permit::class, 'user_id');
     }
-
-    public function appointments() : HasMany
-    {
-        return $this->hasMany(Appointment::class, 'user_id');
-    }
-
 }

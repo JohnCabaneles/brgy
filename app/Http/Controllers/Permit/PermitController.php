@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Permit;
 
 use App\Models\Permit;
 use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade\Pdf;
 use App\Http\Controllers\Controller;
 
 class PermitController extends Controller
@@ -13,7 +14,7 @@ class PermitController extends Controller
      */
     public function index()
     {
-        $permits = Permit::orderBy('created_at', 'desc')->get();
+        $permits = Permit::orderBy('created_at', 'desc')->paginate(10);
 
         return view('permit.index', [
             'permits' => $permits
@@ -39,9 +40,21 @@ class PermitController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Permit $permit)
+    public function show($id)
     {
-        //
+        $permits = Permit::findOrFail($id);
+
+        return view('permit.show', [
+            'permits' => $permits,
+        ]);
+    }
+
+    public function downloadPdf($id)
+    {
+        $permits = Permit::findOrFail($id);
+        
+        $pdf = Pdf::loadView('pdf.permit_details', compact('permits'));
+        return $pdf->download('business_permit.pdf');
     }
 
     /**
@@ -65,6 +78,8 @@ class PermitController extends Controller
      */
     public function destroy(Permit $permit)
     {
-        //
+        $permit->delete();
+
+        return back()->with('message', 'Permit deleted successfully.');
     }
 }
