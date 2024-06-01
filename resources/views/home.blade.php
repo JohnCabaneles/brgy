@@ -23,4 +23,49 @@
   </div>
   <!-- Jumbotron -->
 
+  <section id="events" class="h-full">
+    <div class="md:container md:mx-auto">
+      <h1 class="mt-20 text-3xl font-bold text-center">Upcoming Events</h1>
+
+      <!-- Swiper -->
+      <div class="swiper mySwiper mt-10">
+        <div class="swiper-wrapper">
+          @foreach ($events as $event)
+            <div class="swiper-slide relative">
+              <div class="w-full h-[600px] relative">
+                <img src="{{ asset('storage/' . $event->image) }}" alt="{{ $event->title }}" class="w-full h-full object-cover rounded-lg">
+                <div class="absolute bottom-0 left-0 right-0 p-4 bg-black bg-opacity-50 text-white rounded-b-lg">
+                  <h2 class="text-xl font-semibold">{{ $event->title }}</h2>
+                  <p class="text-sm">{{ $event->description }}</p>
+                </div>
+              </div>
+            </div>
+          @endforeach
+        </div>
+        <div class="swiper-pagination"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="h-screen">
+    Test
+  </section>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      new Swiper('.mySwiper', {
+        slidesPerView: 1,
+        spaceBetween: 10,
+        pagination: {
+          el: '.swiper-pagination',
+          clickable: true,
+        },
+        autoplay: {
+          delay: 5000,
+          disableOnInteraction: false,
+        },
+      });
+    });
+  </script>
+
 </x-home-layout>
