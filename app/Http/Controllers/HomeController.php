@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Event;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -9,7 +10,11 @@ class HomeController extends Controller
 
     public function index()
     {
-        return view('home');
+        $events = Event::orderBy('created_at', 'desc')->get();
+
+        return view('home', [
+            'events' => $events
+        ]);
     }
 
 }

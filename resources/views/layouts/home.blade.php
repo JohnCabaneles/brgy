@@ -14,6 +14,7 @@
 
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
+        <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
     </head>
     <body class="font-sans antialiased">
         <div class="min-h-screen bg-gray-100">
@@ -34,4 +35,5 @@
             </main>
         </div>
     </body>
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 </html>
