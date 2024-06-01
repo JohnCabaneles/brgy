@@ -6,10 +6,12 @@ use App\Http\Controllers\EventController;
 use App\Http\Controllers\PermitController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\BarangayIdController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\IncidentReportController;
 use App\Http\Controllers\Staff\StaffController;
 use App\Http\Controllers\Official\OfficialController;
 use App\Http\Controllers\UserDashboardController;
+use App\Http\Controllers\UserEventController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,6 +27,8 @@ use App\Http\Controllers\UserDashboardController;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/home',[ HomeController::class, 'index'])->name('home');
 
 Route::resource('/officials', OfficialController::class);
 Route::resource('/staffs', StaffController::class);
