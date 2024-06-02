@@ -1,5 +1,4 @@
 <x-home-layout>
-
   <!-- Jumbotron -->
   <div
     class="relative h-[800px] overflow-hidden rounded-lg bg-cover bg-no-repeat bg-center p-12 text-center text-white"
@@ -23,9 +22,9 @@
   </div>
   <!-- Jumbotron -->
 
-  <section id="events" class="h-full">
+  <section id="events" class="h-full mb-20">
     <div class="md:container md:mx-auto">
-      <h1 class="mt-20 text-3xl font-bold text-center">Upcoming Events</h1>
+      <h1 class="mt-20 text-3xl font-bold text-center">Community Events</h1>
 
       <!-- Swiper -->
       <div class="swiper mySwiper mt-10">
@@ -47,25 +46,9 @@
     </div>
   </section>
 
-  <section class="h-screen">
-    Test
-  </section>
+  <section class="h-screen"></section>
 
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      new Swiper('.mySwiper', {
-        slidesPerView: 1,
-        spaceBetween: 10,
-        pagination: {
-          el: '.swiper-pagination',
-          clickable: true,
-        },
-        autoplay: {
-          delay: 5000,
-          disableOnInteraction: false,
-        },
-      });
-    });
-  </script>
+  @include('components.home-footer')
+
 
 </x-home-layout>
