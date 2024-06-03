@@ -13,6 +13,7 @@ use App\Http\Controllers\Staff\StaffController;
 use App\Http\Controllers\Official\OfficialController;
 use App\Http\Controllers\UserDashboardController;
 use App\Http\Controllers\UserEventController;
+use App\Http\Controllers\UserIncidentReportController;
 
 /*
 |--------------------------------------------------------------------------
@@ -59,6 +60,7 @@ Route::middleware('auth')->group(function () {
 Route::prefix('user')->group(function(){
     Route::resource('/dashboard', UserDashboardController::class);
     Route::resource('/permit', UserPermitController::class);
+    Route::resource('/incident_report', UserIncidentReportController::class);
 });
 
 Route::get('/checkout/success', [UserPermitController::class, 'success'])->name('redirects.success');

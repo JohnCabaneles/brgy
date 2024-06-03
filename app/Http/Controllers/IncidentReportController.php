@@ -34,7 +34,7 @@ class IncidentReportController extends Controller
 
         IncidentReport::create($formFields);
 
-        return back()->with('message', 'Incident Report created sucessfully');
+        return redirect()->route('redirects.success');
 
     }
 
@@ -48,8 +48,9 @@ class IncidentReportController extends Controller
 
     }
 
-
-
-
+    public function success()
+    {
+        return view('redirects.success');
+    }
 
 }

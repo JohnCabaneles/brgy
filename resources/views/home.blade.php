@@ -1,7 +1,7 @@
 <x-home-layout>
   <!-- Jumbotron -->
   <div
-    class="relative h-[800px] overflow-hidden rounded-lg bg-cover bg-no-repeat bg-center p-12 text-center text-white"
+    class="relative h-[800px] overflow-hiddens bg-cover bg-no-repeat bg-center p-12 text-center text-white"
     style="background-image: url('{{ asset('images/brgy-hero.jpg') }}');">
     <div
       class="absolute bottom-0 left-0 right-0 top-0 h-full w-full overflow-hidden bg-black/60 bg-fixed">
