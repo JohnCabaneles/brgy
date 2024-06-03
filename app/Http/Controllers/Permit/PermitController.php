@@ -70,7 +70,13 @@ class PermitController extends Controller
      */
     public function update(Request $request, Permit $permit)
     {
-        //
+        $formFields = $request->validate([
+            'payment' => 'string',
+        ]);
+
+        $permit->update($formFields);
+
+        return redirect()->back()->with('message', 'Barangay Id successfully updated!');
     }
 
     /**
