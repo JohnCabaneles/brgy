@@ -7,7 +7,7 @@
             </h2>
             <div class="space-x-4">
                 <a href="/user/permit" class="hover:border-b-2 border-gray-500">Request Permit</a>
-                <a href="#" class="hover:border-b-2 border-gray-500">Incident report</a>
+                <a href="/user/incident_report" class="hover:border-b-2 border-gray-500">Incident report</a>
             </div>
         </div>
     </x-slot>
