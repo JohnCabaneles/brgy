@@ -45,9 +45,6 @@
       </div>
     </div>
   </section>
-
-  <section class="h-screen"></section>
-
   @include('components.home-footer')
 
 
