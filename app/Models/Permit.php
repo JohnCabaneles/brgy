@@ -12,10 +12,7 @@ class Permit extends Model
 
     protected $guarded = [];
 
-    
-
-    public function barangayIds() : BelongsTo
-    {
-        return $this->belongsTo(BarangayId::class);
+    public function user() {
+        return $this->belongsTo(user::class, 'user_id');
     }
 }

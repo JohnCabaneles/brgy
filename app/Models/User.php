@@ -48,7 +48,10 @@ class User extends Authenticatable
 
     public function incedentReports() : HasMany
     {
-        return $this->hasMany(IncidentReport::class);
+        return $this->hasMany(IncidentReport::class, 'brgy_id');
     }
 
+    public function permits() {
+        return $this->hasMany(Permit::class, 'user_id');
+    }
 }

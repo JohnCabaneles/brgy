@@ -11,12 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('incident_reports', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('user_id')->references('id')->on('users')->cascadeOnDelete();
-            $table->string('subject');
-            $table->string('message');
-            $table->timestamps();
+        Schema::table('permits', function (Blueprint $table) {
+            $table->string('payment')->default('pending');
         });
     }
 
@@ -25,6 +21,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('incident_reports');
+        Schema::table('permits', function (Blueprint $table) {
+            $table->dropColumn('payment');
+        });
     }
 };

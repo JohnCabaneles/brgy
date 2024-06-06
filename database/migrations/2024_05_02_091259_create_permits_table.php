@@ -13,16 +13,15 @@ return new class extends Migration
     {
         Schema::create('permits', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->string('businessName');
             $table->string('location');
             $table->string('owner');
-            $table->unsignedBigInteger('idNumber')->nullable();
-            $table->foreign('idNumber')->references('id')->on('barangay_ids')->cascadeOnDelete();
             $table->timestamps();
         });
     }
 
-    /**
+    /**s
      * Reverse the migrations.
      */
     public function down(): void
